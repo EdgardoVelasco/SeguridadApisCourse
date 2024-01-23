@@ -1,4 +1,4 @@
-#DockerFile frontend
+#DockerFile backend
 FROM openjdk:11
 WORKDIR /app
 COPY backend.jar .
