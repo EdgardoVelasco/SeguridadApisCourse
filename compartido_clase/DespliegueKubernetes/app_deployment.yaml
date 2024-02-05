@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment #Tipo de objeto
+metadata:
+  name: mideployyaml #el nombre del deployment
+
+spec: #Configuracion del objeto (Deployment)
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: application-pod
+  
+  template: #Aqui se realiza la configuracion del pod
+    metadata:
+      labels:
+        app: application-pod
+    spec:  #Configuracion del pod
+      containers:
+        - name: contenedor
+          image: edgardovefe/clase_seguridad:app
