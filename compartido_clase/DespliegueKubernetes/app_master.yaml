@@ -1,0 +1,41 @@
+#-*-*-*Services-*-*-*
+apiVersion: v1 
+kind: Service #TipoDeObjeto
+metadata:
+  name: appserviceyaml #nombre del servicio
+spec: #configuracion del servicio
+  selector: #Aqui se indica que pods serán expuestos
+    app: application-pod
+
+  ports: #Puertos a exponer
+    - name: app
+      port: 8080 #Puerto externo
+      targetPort: 8080 #puerto de la aplicación
+
+  type: LoadBalancer #Tipo de exposición 
+
+--- #Separador
+
+#-*-*-*Deployments-*-*-*-*
+apiVersion: apps/v1
+kind: Deployment #Tipo de objeto
+metadata:
+  name: mideployyaml #el nombre del deployment
+
+spec: #Configuracion del objeto (Deployment)
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: application-pod
+  
+  template: #Aqui se realiza la configuracion del pod
+    metadata:
+      labels:
+        app: application-pod
+    spec:  #Configuracion del pod
+      containers:
+        - name: contenedor
+          image: edgardovefe/clase_seguridad:app
+
+

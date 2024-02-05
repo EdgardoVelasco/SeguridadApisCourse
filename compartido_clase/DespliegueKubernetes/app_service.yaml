@@ -12,7 +12,6 @@ spec: #configuracion del servicio
       targetPort: 8080 #puerto de la aplicación
 
   type: LoadBalancer #Tipo de exposición 
-  
 
 
 
