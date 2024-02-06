@@ -1,0 +1,9 @@
+authorityKeyIdentifier=keyid,issuer
+basicConstraints=CA:FALSE
+keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
+subjectAltName = @alt_names
+[alt_names]
+DNS.1 = localhost.local
+DNS.2 = localhost.local
+IP.1 = 40.74.249.41 #Cambiar ip por la ip del servidor que contiene a keycloak
+IP.2 = 127.0.0.1
