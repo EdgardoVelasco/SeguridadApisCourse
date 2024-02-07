@@ -1,4 +1,5 @@
 #Cambiar la ip el issuer por la ip publica de su linux
+#---Comando para iniciar el cluster de kubernetes con el IDP
 minikube start \
   --extra-config=apiserver.authorization-mode=RBAC \
   --extra-config=apiserver.oidc-issuer-url=https://172.212.167.140/auth/realms/master \
@@ -6,3 +7,13 @@ minikube start \
   --extra-config=apiserver.oidc-groups-claim=groups \
   --extra-config=apiserver.oidc-client-id=kubernetes-cluster \
   --extra-config=apiserver.oidc-ca-file=/etc/ca-certificates/ca.crt
+
+
+#---Comando para obtener el access-token del usuario de keycloak
+curl -k -X POST https://172.212.167.140/auth/realms/master/protocol/openid-connect/token \
+  -d grant_type=password \
+  -d client_id=kubernetes-cluster \
+  -d username=edgardo \
+  -d password=12345678 \
+  -d scope=openid \
+  -d response_type=id_token | jq -r '.id_token'
