@@ -17,3 +17,7 @@ curl -k -X POST https://172.212.167.140/auth/realms/master/protocol/openid-conne
   -d password=12345678 \
   -d scope=openid \
   -d response_type=id_token | jq -r '.id_token'
+
+
+#---Comando para probar la autenticación en kubernetes
+curl -H "Authorization: Bearer <ID_TOKEN>" -k https://192.168.49.2:8443/api/v1/namespaces
