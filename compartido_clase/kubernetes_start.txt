@@ -1,0 +1,8 @@
+#Cambiar la ip el issuer por la ip publica de su linux
+minikube start \
+  --extra-config=apiserver.authorization-mode=RBAC \
+  --extra-config=apiserver.oidc-issuer-url=https://172.212.167.140/auth/realms/master \
+  --extra-config=apiserver.oidc-username-claim=name \
+  --extra-config=apiserver.oidc-groups-claim=groups \
+  --extra-config=apiserver.oidc-client-id=kubernetes-cluster \
+  --extra-config=apiserver.oidc-ca-file=/etc/ca-certificates/ca.crt
